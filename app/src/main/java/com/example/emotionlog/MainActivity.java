@@ -64,7 +64,7 @@ public class MainActivity extends RobotActivity implements RobotLifecycleCallbac
         listenFuture.thenConsume(voidFuture -> {
             if(listenFuture.isSuccess()){
                 //Pepperに聞き取ってほしいワードの一覧
-                PhraseSet answerPhraseSet1 = PhraseSetBuilder.with(qiContext).withTexts("楽しかった","眠かった","嬉しかった","悲しかった","イライラ").build();
+                PhraseSet answerPhraseSet1 = PhraseSetBuilder.with(qiContext).withTexts("楽しかった","眠かった","嬉しかった","悲しかった","イライラした").build();
                 Listen listen1 = ListenBuilder.with(qiContext).withPhraseSet(answerPhraseSet1).build();
                 Future<ListenResult> futureListen1 =  listen1.async().run();
                 futureListen1.andThenConsume (aVoid_ -> {
@@ -73,7 +73,6 @@ public class MainActivity extends RobotActivity implements RobotLifecycleCallbac
                     day_log alog = new day_log(getEmotionFromListening(value));
                     //これを入れないと真下のSayが続きません
                     futureListen1.requestCancellation();
-                    SayBuilder.with(qiContext).withText(value).build().async().run();
 
                     final int androidTabletColor = getAndroidTabletColor(alog.getEmotion());
 
@@ -84,23 +83,43 @@ public class MainActivity extends RobotActivity implements RobotLifecycleCallbac
                         }
                     });
 
-                    Animation animation = AnimationBuilder.with(qiContext)
-                            .withResources(R.raw.nicereaction_a001).build();
-                    Animate animate = AnimateBuilder.with(qiContext)
-                            .withAnimation(animation).build();
-                    animate.async().run();
+                    Future<Void> listenFuture2 = SayBuilder.with(qiContext).withText(value+
+                            "のですね。何があったのですか？").build().async().run();
+                    listenFuture2.thenConsume(voidFuture2 -> {
+                        if(listenFuture2.isSuccess()){
+                            //Pepperに聞き取ってほしいワードの一覧
+                            PhraseSet answerPhraseSet2 = PhraseSetBuilder.with(qiContext).withTexts("だ","た",
+                                    "は","を","で").build();
+                            Listen listen2 = ListenBuilder.with(qiContext).withPhraseSet(answerPhraseSet2).build();
+                            Future<ListenResult> futureListen2 =  listen2.async().run();
+                            futureListen1.andThenConsume (aVoid2_ -> {
+                                //聞き取った内容を抽出
+                                String value2 = futureListen2.getValue().getHeardPhrase().getText();
+                                //これを入れないと真下のSayが続きません
+                                futureListen1.requestCancellation();
+                                SayBuilder.with(qiContext).withText("そうなのですね").build().run();
 
-                    Say saycomment = SayBuilder.with(qiContext)
-                            .withPhrase(new Phrase("貴方が良い一日を過ごせて，私も嬉しいです！")).build();
-                    saycomment.async().run();
+                                Animation animation = AnimationBuilder.with(qiContext)
+                                        .withResources(R.raw.nicereaction_a001).build();
+                                Animate animate = AnimateBuilder.with(qiContext)
+                                        .withAnimation(animation).build();
+                                animate.async().run();
+
+                                Say sayhappycomment333 = SayBuilder.with(qiContext)
+                                        .withPhrase(new Phrase("貴方が良い一日を過ごせて，私も嬉しいです！")).build();
+                                sayhappycomment333.run();
 
 
-
+                            });
+                        }
+                    });
 
 
                 });
             }
         });
+
+
 
 
 
@@ -149,7 +168,7 @@ public class MainActivity extends RobotActivity implements RobotLifecycleCallbac
                 return "嬉しい";
             case "悲しかった":
                 return "悲しい";
-            case "イライラ":
+            case "イライラした":
                 return "イライラ";
             default:
                 return "";
