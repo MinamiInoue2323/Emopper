@@ -1,0 +1,9 @@
+topic: ~emotion_topic()
+# Defining extra concepts out of words or group of words
+concept:(emotion) [楽しい　幸せな　イライラした　不安な　腹がたった　落ち込んだ　疲れた　あいうえお]
+concept:(start) [こんにちは　やあ　ただいま　こんばんは]
+
+# Replying to speech
+u:(~start) お帰りなさい！今日はどんな一日でした？
+u:(~emotion) $today_mind=$1 %show_today_mind 今日は $today_mind 一日だったのですね！
+

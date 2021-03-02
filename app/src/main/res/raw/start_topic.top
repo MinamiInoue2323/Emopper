@@ -1,0 +1,6 @@
+topic: ~start_topic()
+# Defining extra concepts out of words or group of words
+concept:(start) [こんにちは　やあ　ただいま　こんばんは]
+
+# Replying to speech
+u:(~start) お帰りなさい！今日はどんな一日でした？
