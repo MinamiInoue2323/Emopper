@@ -7,6 +7,8 @@ import android.graphics.Color;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.view.animation.AlphaAnimation;
+import android.widget.ImageView;
 
 import com.aldebaran.qi.Future;
 import com.aldebaran.qi.sdk.QiContext;
@@ -44,6 +46,7 @@ public class MainActivity extends RobotActivity implements RobotLifecycleCallbac
         setContentView(R.layout.activity_main);
         mainFrame = findViewById((R.id.mainFrame));
         QiSDK.register(this, this);
+        //findViewById(R.id.emotionface).setVisibility(View.GONE);
     }
 
     public void button(View v){
@@ -58,13 +61,14 @@ public class MainActivity extends RobotActivity implements RobotLifecycleCallbac
 
     @Override
     public void onRobotFocusGained(QiContext qiContext) {
+        emotionManager e = new emotionManager();
 
 
         Future<Void> listenFuture = SayBuilder.with(qiContext).withText("お帰りなさい！今日はどんな一日でした？").build().async().run();
         listenFuture.thenConsume(voidFuture -> {
             if(listenFuture.isSuccess()){
                 //Pepperに聞き取ってほしいワードの一覧
-                PhraseSet answerPhraseSet1 = PhraseSetBuilder.with(qiContext).withTexts("楽しかった","眠かった","嬉しかった","悲しかった","イライラした").build();
+                PhraseSet answerPhraseSet1 = PhraseSetBuilder.with(qiContext).withTexts("楽しかった","嬉しかった","悲しかった","疲れた","穏やかな","普通").build();
                 Listen listen1 = ListenBuilder.with(qiContext).withPhraseSet(answerPhraseSet1).build();
                 Future<ListenResult> futureListen1 =  listen1.async().run();
                 futureListen1.andThenConsume (aVoid_ -> {
@@ -74,17 +78,30 @@ public class MainActivity extends RobotActivity implements RobotLifecycleCallbac
                     //これを入れないと真下のSayが続きません
                     futureListen1.requestCancellation();
 
-                    final int androidTabletColor = getAndroidTabletColor(alog.getEmotion());
+                    final int androidTabletColor = e.getEmotionColor(alog.getEmotion());
 
                     runOnUiThread(new Runnable() {
                         @Override
                         public void run() {
+                            //change background color and set image of emotion
                             mainFrame.setBackgroundColor(androidTabletColor);
+                            ImageView myemotion = (ImageView) findViewById(R.id.emotionface);
+                            int address = e.getImageOfEmotion(alog.getEmotion());
+                            if(address == 0){
+                                return;
+                            }
+                            myemotion.setImageResource(address);
+                            AlphaAnimation alpha = new AlphaAnimation(0,0.5f);
+                            alpha.setDuration(2000);
+                            myemotion.startAnimation(alpha);
+                            
+                            //myemotion.setVisibility(View.VISIBLE);
                         }
+
                     });
 
                     Future<Void> listenFuture2 = SayBuilder.with(qiContext).withText(value+
-                            "のですね。何があったのですか？").build().async().run();
+                            "のですね。   何があったのですか？").build().async().run();
                     listenFuture2.thenConsume(voidFuture2 -> {
                         if(listenFuture2.isSuccess()){
                             //Pepperに聞き取ってほしいワードの一覧
@@ -169,8 +186,12 @@ public class MainActivity extends RobotActivity implements RobotLifecycleCallbac
                 return "嬉しい";
             case "悲しかった":
                 return "悲しい";
-            case "イライラした":
-                return "イライラ";
+            case "疲れた":
+                return "疲れた";
+            case "穏やかな":
+                return "穏やか";
+            case "普通":
+                return "普通";
             default:
                 return "";
         }
