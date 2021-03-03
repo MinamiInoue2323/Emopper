@@ -108,6 +108,7 @@ public class MainActivity extends RobotActivity implements RobotLifecycleCallbac
                                 Say sayhappycomment333 = SayBuilder.with(qiContext)
                                         .withPhrase(new Phrase("貴方が良い一日を過ごせて，私も嬉しいです！")).build();
                                 sayhappycomment333.run();
+                                
 
 
                             });
