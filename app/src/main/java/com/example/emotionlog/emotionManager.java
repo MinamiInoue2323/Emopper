@@ -63,4 +63,55 @@ public class emotionManager {
         }
     }
 
+    public int getEmotionScore(String text){
+        switch (text){
+            case "楽しい":
+                return 1;
+            case "嬉しい":
+                return 1;
+            case "悲しい":
+                return -1;
+            case "疲れた":
+                return -1;
+            case "穏やか":
+                return 1;
+            case "普通":
+                return 0;
+            default:
+                return 0;
+        }
+    }
+
+    public int getDayImageAddress(int date){
+        switch (date){
+            case 1:
+                return 1;
+            case 2:
+                return 1;
+            case 3:
+                return -1;
+            case 4:
+                return -1;
+            case 5:
+                return 1;
+            case 6:
+                return 0;
+            case 7:
+                return 0;
+            default:
+                return 0;
+        }
+    }
+
+    public int getDayOfWeekAgo(int today_date, int ago){
+        int date = today_date - ago;
+        if(ago <= 0){
+            date += 7;
+
+        }
+        return date;
+    }
+
+
+
 }

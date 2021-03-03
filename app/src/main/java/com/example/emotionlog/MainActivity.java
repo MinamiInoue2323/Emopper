@@ -35,6 +35,8 @@ import com.aldebaran.qi.sdk.object.conversation.QiChatbot;
 import com.aldebaran.qi.sdk.object.conversation.Say;
 import com.aldebaran.qi.sdk.object.conversation.Topic;
 
+import java.util.Calendar;
+
 public class MainActivity extends RobotActivity implements RobotLifecycleCallbacks {
 
     private QiChatbot qiChatbot;
@@ -62,6 +64,8 @@ public class MainActivity extends RobotActivity implements RobotLifecycleCallbac
     @Override
     public void onRobotFocusGained(QiContext qiContext) {
         emotionManager e = new emotionManager();
+        Calendar today = Calendar.getInstance();
+        diary emo_diary = new diary();
 
 
         Future<Void> listenFuture = SayBuilder.with(qiContext).withText("お帰りなさい！今日はどんな一日でした？").build().async().run();
@@ -125,6 +129,37 @@ public class MainActivity extends RobotActivity implements RobotLifecycleCallbac
                                 Say sayhappycomment333 = SayBuilder.with(qiContext)
                                         .withPhrase(e.getCommenttoEmotion(alog.getEmotion())).build();
                                 sayhappycomment333.run();
+
+                                runOnUiThread(new Runnable() {
+                                    @Override
+                                    public void run() {
+                                        //update diary view
+                                        int showdata = today.get(Calendar.DAY_OF_WEEK) - 1;
+
+                                        if(showdata == 0){
+                                            showdata = 7;
+                                        }
+                                        for(int i = 0; i < showdata; i++){
+                                            String emotion = emo_diary.getEmotionDaysAgo(today,i);
+                                            if(!emotion.equals("none")){
+
+                                                ImageView log_face =
+                                                        (ImageView) findViewById(e.getDayImageAddress(e.getDayOfWeekAgo(today.get(Calendar.DAY_OF_WEEK),i)));
+                                                int address = e.getImageOfEmotion(emotion);
+                                                if(address == 0){
+                                                    return;
+                                                }
+                                                log_face.setImageResource(address);
+                                                        
+
+                                            }
+
+                                        }
+                                        setContentView(R.layout.diary);
+                                    }
+
+                                });
+
                                 
 
 

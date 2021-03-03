@@ -21,6 +21,7 @@
 
 
         <LinearLayout
+            android:id="@+id/monday"
             android:layout_width="150dp"
             android:layout_height="match_parent"
             android:background="@drawable/border2"
@@ -38,15 +39,17 @@
                 android:textSize="30sp" />
 
             <ImageView
-                android:id="@+id/imageView3"
+                android:id="@+id/e_monday"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:scaleX="0.8"
                 android:scaleY="0.8"
+                android:visibility="invisible"
                 app:srcCompat="@drawable/hutsuu" />
         </LinearLayout>
 
         <LinearLayout
+            android:id="@+id/tuesday"
             android:layout_width="150dp"
             android:layout_height="match_parent"
             android:background="@drawable/border2"
@@ -64,15 +67,17 @@
                 android:textSize="30sp" />
 
             <ImageView
-                android:id="@+id/imageView4"
+                android:id="@+id/e_tuesday"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:scaleX="0.8"
                 android:scaleY="0.8"
+                android:visibility="invisible"
                 app:srcCompat="@drawable/hutsuu" />
         </LinearLayout>
 
         <LinearLayout
+            android:id="@+id/wednesday"
             android:layout_width="150dp"
             android:layout_height="match_parent"
             android:background="@drawable/border2"
@@ -90,15 +95,17 @@
                 android:textSize="30sp" />
 
             <ImageView
-                android:id="@+id/imageView5"
+                android:id="@+id/e_wednesday"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:scaleX="0.8"
                 android:scaleY="0.8"
+                android:visibility="invisible"
                 app:srcCompat="@drawable/hutsuu" />
         </LinearLayout>
 
         <LinearLayout
+            android:id="@+id/thursday"
             android:layout_width="150dp"
             android:layout_height="match_parent"
             android:background="@drawable/border2"
@@ -116,15 +123,17 @@
                 android:textSize="30sp" />
 
             <ImageView
-                android:id="@+id/imageView6"
+                android:id="@+id/e_thursday"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:scaleX="0.8"
                 android:scaleY="0.8"
+                android:visibility="invisible"
                 app:srcCompat="@drawable/hutsuu" />
         </LinearLayout>
 
         <LinearLayout
+            android:id="@+id/friday"
             android:layout_width="150dp"
             android:layout_height="match_parent"
             android:background="@drawable/border2"
@@ -142,15 +151,17 @@
                 android:textSize="30sp" />
 
             <ImageView
-                android:id="@+id/imageView7"
+                android:id="@+id/e_friday"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:scaleX="0.8"
                 android:scaleY="0.8"
+                android:visibility="invisible"
                 app:srcCompat="@drawable/hutsuu" />
         </LinearLayout>
 
         <LinearLayout
+            android:id="@+id/saturday"
             android:layout_width="150dp"
             android:layout_height="match_parent"
             android:background="@drawable/border2"
@@ -169,15 +180,17 @@
                 android:textSize="30sp" />
 
             <ImageView
-                android:id="@+id/imageView8"
+                android:id="@+id/e_saturday"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:scaleX="0.8"
                 android:scaleY="0.8"
+                android:visibility="invisible"
                 app:srcCompat="@drawable/hutsuu" />
         </LinearLayout>
 
         <LinearLayout
+            android:id="@+id/sunday"
             android:layout_width="150dp"
             android:layout_height="match_parent"
             android:background="@drawable/border2"
@@ -195,11 +208,12 @@
                 android:textSize="30sp" />
 
             <ImageView
-                android:id="@+id/imageView9"
+                android:id="@+id/e_sunday"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:scaleX="0.8"
                 android:scaleY="0.8"
+                android:visibility="invisible"
                 app:srcCompat="@drawable/hutsuu" />
         </LinearLayout>
     </LinearLayout>
