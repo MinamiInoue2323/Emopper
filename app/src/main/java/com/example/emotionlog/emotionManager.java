@@ -2,6 +2,8 @@ package com.example.emotionlog;
 
 import android.graphics.Color;
 
+import com.aldebaran.qi.sdk.object.conversation.Phrase;
+
 
 public class emotionManager {
     public int getEmotionColor(String text){
@@ -39,6 +41,25 @@ public class emotionManager {
                 return R.drawable.hutsuu;
             default:
                 return 0;
+        }
+    }
+
+    public Phrase getCommenttoEmotion(String text){
+        switch (text){
+            case "楽しい":
+                return new Phrase("貴方が良い一日を過ごせて，私も嬉しいです！");
+            case "嬉しい":
+                return new Phrase("貴方が良い一日を過ごせて，私も嬉しいです！");
+            case "悲しい":
+                return new Phrase("悲しい時は，深呼吸をすると良いですよ．　僕と一緒にやってみましょう");
+            case "疲れた":
+                return new Phrase("今日も一日，頑張ったのですね．　お疲れ様です．　ゆっくり休んでください");
+            case "穏やか":
+                return new Phrase("貴方が良い一日を過ごせて，私も嬉しいです！");
+            case "普通":
+                return new Phrase("何もない普通の日こそ，　　実はかけがえのないものなのかもしれませんね．");
+            default:
+                return new Phrase("今日も一日お疲れ様でした！");
         }
     }
 
