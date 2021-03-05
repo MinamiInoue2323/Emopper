@@ -1,15 +1,23 @@
 package com.example.emotionlog;
 
+import android.util.Log;
+
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Iterator;
 
 public class diary {
-    private ArrayList<day_log> diary;
+    private ArrayList<day_log> diary = new ArrayList<day_log>();
     private emotionManager e = new emotionManager();
 
     public diary(){
         setdefault();
+        Iterator<day_log> iterator = diary.iterator();
+        while( iterator.hasNext() ){
+            day_log alog = iterator.next();
+            Log.i("date",Integer.toString(alog.date.get(Calendar.DATE)));
+            Log.i("emotion",alog.getEmotion());
+        }
 
     }
 
@@ -18,16 +26,21 @@ public class diary {
     }
 
     public void setdefault(){
+
         //add 4 days log
         Calendar date = Calendar.getInstance();
-        changedate(date, -1);
-        diary.add(new day_log("楽しい",date));
-        changedate(date, -1);
-        diary.add(new day_log("嬉しい",date));
-        changedate(date, -1);
-        diary.add(new day_log("悲しい",date));
-        changedate(date, -1);
-        diary.add(new day_log("疲れた",date));
+        date.add(Calendar.DATE, -1);
+        diary.add(new day_log("楽しい" ,date));
+
+        Calendar date1 = Calendar.getInstance();
+        date1.add(Calendar.DATE, -2);
+        diary.add(new day_log("嬉しい",date1));
+        Calendar date2 = Calendar.getInstance();
+        date2.add(Calendar.DATE, -3);
+        diary.add(new day_log("悲しい",date2));
+        Calendar date3 = Calendar.getInstance();
+        date3.add(Calendar.DATE, -4);
+        diary.add(new day_log("疲れた",date3));
 
 
     }
@@ -70,6 +83,8 @@ public class diary {
         changedate(clc, -day);
         return getEmotionOfDate(clc);
     }
+
+
 
 
 

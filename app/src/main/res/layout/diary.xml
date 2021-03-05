@@ -9,11 +9,12 @@
 
     <LinearLayout
         android:id="@+id/linearLayout3"
-        android:layout_width="1050dp"
-        android:layout_height="0dp"
+        android:layout_width="700dp"
+        android:layout_height="200dp"
         android:layout_marginBottom="275dp"
         android:background="@drawable/border"
         android:orientation="horizontal"
+        android:visibility="visible"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -22,7 +23,7 @@
 
         <LinearLayout
             android:id="@+id/monday"
-            android:layout_width="150dp"
+            android:layout_width="100dp"
             android:layout_height="match_parent"
             android:background="@drawable/border2"
             android:orientation="vertical">
@@ -44,13 +45,13 @@
                 android:layout_height="wrap_content"
                 android:scaleX="0.8"
                 android:scaleY="0.8"
-                android:visibility="invisible"
-                app:srcCompat="@drawable/hutsuu" />
+                android:visibility="visible"
+                app:srcCompat="@drawable/tsukareta" />
         </LinearLayout>
 
         <LinearLayout
             android:id="@+id/tuesday"
-            android:layout_width="150dp"
+            android:layout_width="100dp"
             android:layout_height="match_parent"
             android:background="@drawable/border2"
             android:orientation="vertical">
@@ -72,13 +73,13 @@
                 android:layout_height="wrap_content"
                 android:scaleX="0.8"
                 android:scaleY="0.8"
-                android:visibility="invisible"
-                app:srcCompat="@drawable/hutsuu" />
+                android:visibility="visible"
+                app:srcCompat="@drawable/kanashii" />
         </LinearLayout>
 
         <LinearLayout
             android:id="@+id/wednesday"
-            android:layout_width="150dp"
+            android:layout_width="100dp"
             android:layout_height="match_parent"
             android:background="@drawable/border2"
             android:orientation="vertical">
@@ -100,13 +101,13 @@
                 android:layout_height="wrap_content"
                 android:scaleX="0.8"
                 android:scaleY="0.8"
-                android:visibility="invisible"
-                app:srcCompat="@drawable/hutsuu" />
+                android:visibility="visible"
+                app:srcCompat="@drawable/ureshii" />
         </LinearLayout>
 
         <LinearLayout
             android:id="@+id/thursday"
-            android:layout_width="150dp"
+            android:layout_width="100dp"
             android:layout_height="match_parent"
             android:background="@drawable/border2"
             android:orientation="vertical">
@@ -128,13 +129,13 @@
                 android:layout_height="wrap_content"
                 android:scaleX="0.8"
                 android:scaleY="0.8"
-                android:visibility="invisible"
-                app:srcCompat="@drawable/hutsuu" />
+                android:visibility="visible"
+                app:srcCompat="@drawable/tanoshii" />
         </LinearLayout>
 
         <LinearLayout
             android:id="@+id/friday"
-            android:layout_width="150dp"
+            android:layout_width="100dp"
             android:layout_height="match_parent"
             android:background="@drawable/border2"
             android:orientation="vertical">
@@ -156,13 +157,13 @@
                 android:layout_height="wrap_content"
                 android:scaleX="0.8"
                 android:scaleY="0.8"
-                android:visibility="invisible"
-                app:srcCompat="@drawable/hutsuu" />
+                android:visibility="visible"
+                app:srcCompat="@drawable/kanashii" />
         </LinearLayout>
 
         <LinearLayout
             android:id="@+id/saturday"
-            android:layout_width="150dp"
+            android:layout_width="100dp"
             android:layout_height="match_parent"
             android:background="@drawable/border2"
             android:orientation="vertical">
@@ -191,7 +192,7 @@
 
         <LinearLayout
             android:id="@+id/sunday"
-            android:layout_width="150dp"
+            android:layout_width="100dp"
             android:layout_height="match_parent"
             android:background="@drawable/border2"
             android:orientation="vertical">

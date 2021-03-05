@@ -85,19 +85,19 @@ public class emotionManager {
     public int getDayImageAddress(int date){
         switch (date){
             case 1:
-                return 1;
+                return R.id.e_monday;
             case 2:
-                return 1;
+                return R.id.e_tuesday;
             case 3:
-                return -1;
+                return R.id.e_wednesday;
             case 4:
-                return -1;
+                return R.id.e_thursday;
             case 5:
-                return 1;
+                return R.id.e_friday;
             case 6:
-                return 0;
+                return R.id.e_saturday;
             case 7:
-                return 0;
+                return R.id.e_sunday;
             default:
                 return 0;
         }
